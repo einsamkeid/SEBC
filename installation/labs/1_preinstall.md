@@ -25,6 +25,9 @@
 ## 2. Show the mount attributes of all volumes
 
 ```
+[root@ip-10-0-0-73 ~]# blkid
+/dev/xvde: LABEL="centos_root" UUID="44d27f92-d3df-4207-80ea-22830afccf03" TYPE="ext4"
+
 [root@ip-10-0-0-73 ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/xvde        30G   12G   17G  43% /
@@ -37,9 +40,21 @@ cm_processes    7.4G   18M  7.4G   1% /var/run/cloudera-scm-agent/process
 
 There are no non-root ext-based volumes
 
+### the command that shows reserve space is expected (there is one for ext3 and ext4)
+[root@ip-10-0-0-73 ~]# tune2fs -l /dev/xvde | grep 'Reserved block count'
+Reserved block count:     393145
+### the command that 
+
+
 ## 4. Show that transparent hugepages is disabled
+### CENTOS 6.5 is not required to be disabled
 
-
+### Add commands to `/etc/rc.local` to disable them (effective at next reboot)  
+#### CentOS 6.7 method
+```
+echo 'echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled' >> /etc/rc.local
+echo 'echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag' >> /etc/rc.local
+```
 ## 5. Report the network interface attributes
 ```
 [root@ip-10-0-0-73 ~]# ip route
