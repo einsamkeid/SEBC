@@ -41,10 +41,10 @@ cm_processes    7.4G   18M  7.4G   1% /var/run/cloudera-scm-agent/process
 There are no non-root ext-based volumes
 
 ### the command that shows reserve space is expected (there is one for ext3 and ext4)
+````
 [root@ip-10-0-0-73 ~]# tune2fs -l /dev/xvde | grep 'Reserved block count'
 Reserved block count:     393145
-### the command that 
-
+```
 
 ## 4. Show that transparent hugepages is disabled
 ### CENTOS 6.5 is not required to be disabled
