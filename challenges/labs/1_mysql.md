@@ -10,6 +10,7 @@ ip-10-0-0-137.ap-southeast-1.compute.internal
 mysql  Ver 14.14 Distrib 5.5.53, for Linux (x86_64) using readline 5.1
 ```
 ###The command and output for listing MySQL databases
+```
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -25,3 +26,4 @@ mysql> show databases;
 | sentry             |
 +--------------------+
 9 rows in set (0.00 sec)
+```
